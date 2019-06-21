@@ -1,0 +1,26 @@
+{% set name = 'ansiblecorehost'  %}
+{% set region = 'us-east1-b'  %}
+{% set project = 'broccolifamily-test-project' %}
+{% set network = 'custom-vpc1' %}
+{% set subnet = 'ansiblenet' %}
+
+resources:
+- name: {{ name }}
+  type: compute.v1.instance
+  properties:
+  #basic configuration comes here
+    zone: {{ region }}
+    machineType: https://www.googleapis.com/compute/v1/projects/{{ project }}/zones/us-east1-b/machineTypes/g1-small
+    disks:
+    - deviceName: boot
+      type: PERSISTENT
+      boot: true
+      autoDelete: true
+      initializeParams:
+        sourceImage: https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-1804-bionic-v20190617
+    networkInterfaces:
+    - network: https://www.googleapis.com/compute/v1/projects/{{ project }}/global/networks/{{ network }}
+      subnetwork: https://www.googleapis.com/compute/v1/projects/{{ project }}/regions/us-east1/subnetworks/{{ subnet }}
+      accessConfigs:
+      - name: External NAT
+        type: ONE_TO_ONE_NAT
