@@ -1,0 +1,16 @@
+properties:
+  #basic configuration comes here
+    zone: [zone where the instance resides]
+    machineType: [URL of the machine type resource to use for this instance]
+    disks:
+    - deviceName: [unique device name]
+      type: [type of the disk]
+      boot: [indicate that it is boot disk or not]
+      autoDelete: [Specifies whether the disk will be auto-deleted when the instance is deleted]
+      initializeParams:
+        sourceImage: [The source image to create the disk]
+    networkInterfaces:
+    - network: [URL of the network resource for this instance]
+      accessConfigs:
+      - name: [Name for access configuration]
+        type: [type of configuration]
