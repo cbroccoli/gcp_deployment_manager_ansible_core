@@ -1,9 +1,9 @@
 imports:
-- path: ansible_core.jinja
+- path: ansible-host.jinja
 
 resources:
 - name: ansible-host
-  type: ansible_core.jinja
+  type: ansible-host.jinja
   properties:
     name            : newansiblehost2
     region          : us-east1
