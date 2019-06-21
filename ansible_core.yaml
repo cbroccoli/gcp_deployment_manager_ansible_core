@@ -1,16 +1,20 @@
-properties:
+resources:
+- name: ansiblecorehost
+  type: compute.v1.instance
+  properties:
   #basic configuration comes here
-    zone: [zone where the instance resides]
-    machineType: [URL of the machine type resource to use for this instance]
+    zone: us-east1-b
+    machineType: https://www.googleapis.com/compute/v1/projects/broccolifamily-test-project/zones/us-east1-b/machineTypes/g1-small
     disks:
-    - deviceName: [unique device name]
-      type: [type of the disk]
-      boot: [indicate that it is boot disk or not]
-      autoDelete: [Specifies whether the disk will be auto-deleted when the instance is deleted]
+    - deviceName: boot
+      type: PERSISTENT
+      boot: true
+      autoDelete: true
       initializeParams:
-        sourceImage: [The source image to create the disk]
+        sourceImage: https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-1804-bionic-v20190617
     networkInterfaces:
-    - network: [URL of the network resource for this instance]
+    - network: https://www.googleapis.com/compute/v1/projects/broccolifamily-test-project/global/networks/custom-vpc1
+      subnetwork: https://www.googleapis.com/compute/v1/projects/broccolifamily-test-project/regions/us-east1/subnetworks/ansiblenet
       accessConfigs:
-      - name: [Name for access configuration]
-        type: [type of configuration]
+      - name: External NAT
+        type: ONE_TO_ONE_NAT
