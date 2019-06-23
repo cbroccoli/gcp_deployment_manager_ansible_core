@@ -1,0 +1,13 @@
+imports:
+- path: ansible-host.jinja
+
+resources:
+- name: ansible-host
+  type: ansible-host.jinja
+  properties:
+    name            : newansiblehost2
+    region          : us-east1
+    zone            : us-east1-b
+    project         : broccolifamily-test-project
+    network         : custom-vpc1
+    subnet          : ansiblenet

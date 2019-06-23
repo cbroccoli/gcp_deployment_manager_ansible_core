@@ -1,0 +1,20 @@
+resources:
+- name: {{properties["name"]}}
+  type: compute.v1.instance
+  properties:
+  #basic configuration comes here
+    zone: {{properties["zone"]}}
+    machineType: https://www.googleapis.com/compute/v1/projects/{{properties["project"]}}/zones/{{properties["zone"]}}/machineTypes/g1-small
+    disks:
+    - deviceName: boot
+      type: PERSISTENT
+      boot: true
+      autoDelete: true
+      initializeParams:
+        sourceImage: https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-1804-bionic-v20190617
+    networkInterfaces:
+    - network: https://www.googleapis.com/compute/v1/projects/{{properties["project"]}}/global/networks/{{properties["network"]}}
+      subnetwork: https://www.googleapis.com/compute/v1/projects/{{properties["project"]}}/regions/{{properties["region"]}}/subnetworks/{{properties["subnet"]}}
+      accessConfigs:
+      - name: External NAT
+        type: ONE_TO_ONE_NAT
