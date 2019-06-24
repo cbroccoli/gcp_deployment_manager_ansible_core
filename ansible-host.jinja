@@ -2,9 +2,10 @@ resources:
 - name: {{properties["name"]}}
   type: compute.v1.instance
   properties:
-  #basic configuration comes here
     zone: {{properties["zone"]}}
     machineType: https://www.googleapis.com/compute/v1/projects/{{properties["project"]}}/zones/{{properties["zone"]}}/machineTypes/g1-small
+    tags:
+      items: [{{properties["tags"]}}]
     disks:
     - deviceName: boot
       type: PERSISTENT
@@ -18,6 +19,3 @@ resources:
       accessConfigs:
       - name: External NAT
         type: ONE_TO_ONE_NAT
-      tags:
-        items:
-        - management-host
