@@ -11,3 +11,4 @@ resources:
     project         : broccolifamily-test-project
     network         : custom-vpc1
     subnet          : ansiblenet
+    tags            : "managment-host"
