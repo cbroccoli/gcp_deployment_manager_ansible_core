@@ -3,7 +3,7 @@ resources:
   type: compute.v1.instance
   properties:
     zone: {{properties["zone"]}}
-    machineType: https://www.googleapis.com/compute/v1/projects/{{properties["project"]}}/zones/{{properties["zone"]}}/machineTypes/g1-small
+    machineType: https://www.googleapis.com/compute/v1/projects/{{ env["project"] }}/zones/{{properties["zone"]}}/machineTypes/g1-small
     tags:
       items: [{{properties["tags"]}}]
     disks:
@@ -14,8 +14,8 @@ resources:
       initializeParams:
         sourceImage: https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-1804-bionic-v20190617
     networkInterfaces:
-    - network: https://www.googleapis.com/compute/v1/projects/{{properties["project"]}}/global/networks/{{properties["network"]}}
-      subnetwork: https://www.googleapis.com/compute/v1/projects/{{properties["project"]}}/regions/{{properties["region"]}}/subnetworks/{{properties["subnet"]}}
+    - network: https://www.googleapis.com/compute/v1/projects/{{ env["project"] }}/global/networks/{{properties["network"]}}
+      subnetwork: https://www.googleapis.com/compute/v1/projects/{{ env["project"] }}/regions/{{properties["region"]}}/subnetworks/{{properties["subnet"]}}
       accessConfigs:
       - name: External NAT
         type: ONE_TO_ONE_NAT
