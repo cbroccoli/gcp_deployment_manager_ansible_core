@@ -1,3 +1,11 @@
+# 
+# This file and the associated jinja file provides the configuration information to 
+# setup a basic compute instancewhich will install Ubuntu 18.04LTE, the latest release  
+# of Ansible and setup the necessaryservice accounts and encryption keys to be able   
+# to run Ansible when complete.
+# It assumes a custom VPC is configured and requires that the host be placed in a 
+# known subnet.  
+#
 imports:
 - path: ansible-host.jinja
 
@@ -11,4 +19,6 @@ resources:
     project         : broccolifamily-test-project
     network         : custom-vpc1
     subnet          : ansiblenet
+    
+# Add Network tags According to applicable firewall policy
     tags            : "managment-host"
