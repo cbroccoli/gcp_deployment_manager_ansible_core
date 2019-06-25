@@ -16,7 +16,6 @@ resources:
     name            : newansiblehost2
     region          : us-east1
     zone            : us-east1-b
-    project         : broccolifamily-test-project
     network         : custom-vpc1
     subnet          : ansiblenet
     
