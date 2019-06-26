@@ -19,3 +19,11 @@ resources:
       accessConfigs:
       - name: External NAT
         type: ONE_TO_ONE_NAT
+{# 
+Create service account.
+#}
+- name: {{ env['name'] }}
+  type: iam.v1.serviceAccount
+  properties:
+    accountId: {{ env['name'] }}
+    displayName: serviceAccount-{{ env['name'] }}
