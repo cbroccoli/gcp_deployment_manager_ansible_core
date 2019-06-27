@@ -23,7 +23,7 @@ resources:
       items:
         - key: startup-script
           value: |
-            {{ imports["scripts/install-ansible.py"]|indent(12)|replace("@PROJECT@",env["project"])|replace("@ZONE@",properties["zone"]) 
+            {{ imports["scripts/install-ansible.py"]|indent(12)|replace("@PROJECT@",env["project"])|replace("@ZONE@",properties["zone"]) }}
 {# 
 Create service account.
 #}
