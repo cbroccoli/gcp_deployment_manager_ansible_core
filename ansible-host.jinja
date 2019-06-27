@@ -19,6 +19,11 @@ resources:
       accessConfigs:
       - name: External NAT
         type: ONE_TO_ONE_NAT
+     metadata:
+      items:
+        - key: startup-script
+          value: |
+            {{ imports["scripts/startup-script.py"]|indent(12)|replace("@PROJECT@",env["project"])|replace("@ZONE@",properties["zone"]) 
 {# 
 Create service account.
 #}
