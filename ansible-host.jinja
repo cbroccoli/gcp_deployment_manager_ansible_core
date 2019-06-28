@@ -21,6 +21,10 @@ resources:
         type: ONE_TO_ONE_NAT
      metadata:
       items:
+      - key: startup-script-py
+          value: |
+            #!/bin/bash
+            sudo apt-get install python -y
         - key: startup-script
           value: |
             {{ imports["scripts/install_ansible.py"]|indent(12)|replace("@PROJECT@",env["project"])|replace("@ZONE@",properties["zone"]) }}
