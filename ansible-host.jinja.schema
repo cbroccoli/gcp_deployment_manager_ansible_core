@@ -18,4 +18,4 @@ info:
     Create a Ansible Core host in GCP.
 
 imports:
-- path: scripts/ansilbe_host.py
+- path: scripts/install_ansible.py
