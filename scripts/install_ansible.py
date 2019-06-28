@@ -16,7 +16,7 @@ ZONE              = @ZONE@
 
 def update_host():
     
-   subprocess.call(['apt-get', 'update', '-y')
+   subprocess.call(['apt-get', 'update', '-y'])
 
 # END update_host()
 
