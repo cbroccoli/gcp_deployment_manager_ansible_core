@@ -1,11 +1,10 @@
 # gcp_deployment_manager_ansible_core
 Auto configure an Ansible Core host in GCP on Ubuntu 18.04LTE.
 
-Still a work in progress. Still to do are:
-1. Add metadata to compute image configuration to run the python script.  Right now the image is installed but Ansible is not installed.
-2. The code is lacking error checking and comments.
+Still a work in progress. Most of the code should work. Still letf is:
+1. The code is lacking error checking and comments.
 
-Once the host is installed, you will need to manually copy the key from the newly created service account to the host.
+Once the host is installed you will still need to manually generate the Service Account key in the GCP console, copy the resulting json file to the /etc/ansible/keys directory and update the inventory configuration file located in the /etc/ansible/inventory directory (a placeholder in the file shows where to enter the filename).
 
 To deploy the files on gcp run
 
