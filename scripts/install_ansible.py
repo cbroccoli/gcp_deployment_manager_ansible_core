@@ -39,13 +39,13 @@ def configure_ansible()
     f_old = open("/etc/ansible/ansible.cfg")
     f_new = open("/etc/ansible/ansible-config-new.cfg", "w")
 
-for line in f_old:
-    if 'enable_plugins = ' in line:
-       c = line
-       d = re.sub('#enable_plugins = ', 'enable_plugins = gcp_compute, ', c)
-       f_new.write(d)
-    else:
-        f_new.write(line)
+    for line in f_old:
+      if 'enable_plugins = ' in line:
+         c = line
+         d = re.sub('#enable_plugins = ', 'enable_plugins = gcp_compute, ', c)
+         f_new.write(d)
+      else:
+         f_new.write(line)
 
     f_old.close()
     f_new.close()
@@ -57,13 +57,15 @@ for line in f_old:
 
     subprocess.call(['mkdir', '/etc/ansible/playbooks'])
     subprocess.call(['mkdir', '/etc/ansible/inventory'])
+    subprocess.call(['mkdir', '/etc/ansible/keys'])
+
 
 # Add the basic framework for the configuration file which will allow Ansible to access
 # the GCP inventory for the project. Update the ZONE AND PROJECT variables (including the 
 # []) with the correct values.
 
     f_inventory = open("/etc/ansible/inventory/inventoy.gcp.yml", "w")
-    f_inventory.write("plugin: gcp_compute \nzones: \n{} \nprojects: \n - google.com:{} \nfilters: null \nauth_kind: serviceaccount \nservice_account_file: INSERT_JSON_FILEPATH".format(ZONE, PROJECT))
+    f_inventory.write("plugin: gcp_compute \nzones: \n{} \nprojects: \n - google.com:{} \nfilters: null \nauth_kind: serviceaccount \nservice_account_file: /etc/ansible/keys/KEYFILENAME.json".format(ZONE, PROJECT))
     f_inventory.close()
 
 # END configure_ansible()
