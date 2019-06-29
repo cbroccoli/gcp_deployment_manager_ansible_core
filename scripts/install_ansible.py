@@ -77,3 +77,6 @@ def main():
     configure_ansible()
 
 # END main()
+
+if __name__ == '__main__':
+    main()
