@@ -11,8 +11,8 @@ import re
 # Update the variables with the values for the current project and zone before executing the 
 # depolyment.
 
-PROJECT           = @PROJECT@
-ZONE              = @ZONE@
+PROJECT           = "@PROJECT@"
+ZONE              = "@ZONE@"
 
 def update_host():
     
