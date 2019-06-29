@@ -34,7 +34,7 @@ def install_ansible():
 
 # END install_ansible()
     
-def configure_ansible()
+def configure_ansible():
     
     f_old = open("/etc/ansible/ansible.cfg")
     f_new = open("/etc/ansible/ansible-config-new.cfg", "w")
@@ -70,7 +70,7 @@ def configure_ansible()
 
 # END configure_ansible()
 
-def main()
+def main():
 
     update_host()
     install_ansible()
