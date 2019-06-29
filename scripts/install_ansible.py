@@ -65,7 +65,7 @@ def configure_ansible():
 # []) with the correct values.
 
     f_inventory = open("/etc/ansible/inventory/inventoy.gcp.yml", "w")
-    f_inventory.write("plugin: gcp_compute \nzones: \n{} \nprojects: \n - google.com:{} \nfilters: null \nauth_kind: serviceaccount \nservice_account_file: /etc/ansible/keys/KEYFILENAME.json".format(ZONE, PROJECT))
+    f_inventory.write("plugin: gcp_compute \nzones: \n  - {} \nprojects: \n  - google.com:{} \nfilters: null \nauth_kind: serviceaccount \nservice_account_file: /etc/ansible/keys/KEYFILENAME.json".format(ZONE, PROJECT))
     f_inventory.close()
 
 # END configure_ansible()
