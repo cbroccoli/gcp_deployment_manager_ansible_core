@@ -30,5 +30,28 @@ Create service account.
 - name: {{ env['name'] }}
   type: iam.v1.serviceAccount
   properties:
-    accountId: {{ env['name'] }}
-    displayName: serviceAccount-{{ env['name'] }}
+    accountId: {{ env['name'] }}-svc-account
+    displayName: serviceAccount-{{ env['name'] }}-svc-account
+{# 
+Update rights to give the account project owner privileges.
+Found this snippet on StackOverflow here:
+https://stackoverflow.com/questions/48710548/google-deployment-manager-assigning-iam-policies-at-project/49416120#answer-49416120
+#}
+- name: get-iam-policy
+  action: gcp-types/cloudresourcemanager-v1:cloudresourcemanager.projects.getIamPolicy
+  properties:
+    resource: {{ env["project"] }}
+  metadata:
+    runtimePolicy:
+    - 'UPDATE_ALWAYS'
+
+- name: update-iam-policy
+  action: gcp-types/cloudresourcemanager-v1:cloudresourcemanager.projects.setIamPolicy
+  properties:
+    resource: {{ env["project"] }}
+    policy: $(ref.get-iam-policy)
+    gcpIamPolicyPatch:
+      add:
+      - role: roles/owner
+        members:
+        - serviceAccount:$(ref.{{ deployment }}-svc-account.email)
