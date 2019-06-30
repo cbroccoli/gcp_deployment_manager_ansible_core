@@ -15,7 +15,6 @@
 # limitations under the License.
 #
 import subprocess
-import os
 import time
 import re
 
