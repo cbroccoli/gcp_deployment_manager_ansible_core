@@ -54,4 +54,4 @@ https://stackoverflow.com/questions/48710548/google-deployment-manager-assigning
       add:
       - role: roles/owner
         members:
-        - serviceAccount:$(ref.{{ serviceAccount-[env['name'] }}.email)
+        - serviceAccount:$(ref.{{ serviceAccount-env['name'] }}.email)
