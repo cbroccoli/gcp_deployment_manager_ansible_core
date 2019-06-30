@@ -27,7 +27,7 @@ resources:
 {# 
 Create service account.
 #}
-- name: {{ env['name'] }}
+- name: {{ env['name'] }}-svc-account
   type: iam.v1.serviceAccount
   properties:
     accountId: {{ env['name'] }}-svc-account
