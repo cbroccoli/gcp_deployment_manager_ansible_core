@@ -27,11 +27,11 @@ resources:
 {# 
 Create service account.
 #}
-- name: {{ env['name'] }}-svc-account
+- name: serviceAccount-{{ env['name'] }}
   type: iam.v1.serviceAccount
   properties:
-    accountId: {{ env['name'] }}-svc-account
-    displayName: serviceAccount-{{ env['name'] }}-svc-account
+    accountId: serviceAccount-{{ env['name'] }}
+    displayName: serviceAccount-{{ env['name'] }}
 {# 
 Update rights to give the account project owner privileges.
 Found this snippet on StackOverflow here:
@@ -54,4 +54,4 @@ https://stackoverflow.com/questions/48710548/google-deployment-manager-assigning
       add:
       - role: roles/owner
         members:
-        - serviceAccount:$(ref.{{ [env['name'] }}-svc-account.email)
+        - serviceAccount:$(serviceAccount-ref.{{ [env['name'] }}.email)
