@@ -1,4 +1,4 @@
-# gcp_deployment_manager_ansible_core
+# Deploy Ansilbe Core using GCP Deployment Manager
 Auto configure an Ansible Core host in GCP on Ubuntu 18.04LTE.
 
 Still a work in progress. Most of the code should work. Still letf is:
