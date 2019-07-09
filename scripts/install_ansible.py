@@ -38,9 +38,9 @@ def install_ansible():
     time.sleep(5)
     subprocess.call(['sudo', 'apt-get', 'install', 'ansible', '-y'])
     time.sleep(5)
-    subprocess.call(['sudo', 'apt-get', 'install', 'python3-pip', '-y'])
+    subprocess.call(['sudo', 'apt-get', 'install', 'python-pip', '-y'])
     time.sleep(5)    
-    subprocess.call(['sudo', 'pip3', 'install', 'requests', 'google-auth'])
+    subprocess.call(['sudo', 'pip', 'install', 'requests', 'google-auth'])
 
 # END install_ansible()
     
