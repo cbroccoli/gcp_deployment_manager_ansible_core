@@ -26,7 +26,7 @@ resources:
       boot: true
       autoDelete: true
       initializeParams:
-        sourceImage: https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-1804-bionic-v20190617
+        sourceImage: https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-1804-bionic-v20190628
     networkInterfaces:
     - network: https://www.googleapis.com/compute/v1/projects/{{ env["project"] }}/global/networks/{{properties["network"]}}
       subnetwork: https://www.googleapis.com/compute/v1/projects/{{ env["project"] }}/regions/{{properties["region"]}}/subnetworks/{{properties["subnet"]}}
